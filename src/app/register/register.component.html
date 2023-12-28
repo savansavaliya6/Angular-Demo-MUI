@@ -1,0 +1,37 @@
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+    <mat-card class="box" class="mat-elevation-z4">
+        <mat-card-header>
+            <mat-card-title>Register</mat-card-title>
+        </mat-card-header>
+        <form [formGroup]="registerForm" class="example-form" (ngSubmit)="onSubmit()">
+            <mat-card-content>
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <input matInput placeholder="Username" formControlName="username" required>
+                    <mat-error *ngIf="registerForm.controls['username'].hasError('required')">Username is
+                        required</mat-error>
+                </mat-form-field>
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <input matInput placeholder="Email" formControlName="email" required>
+                    <mat-error *ngIf="registerForm.controls['email'].hasError('required')">email is required</mat-error>
+                </mat-form-field>
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <input matInput type="password" placeholder="Password" formControlName="password" required>
+                    <mat-error *ngIf="registerForm.get('password').hasError('required')">Password is
+                        required</mat-error>
+                </mat-form-field>
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Choose a role...</mat-label>
+                    <mat-select formControlName="role" required>
+                        <mat-option [value]="role" *ngFor="let role of Roles">{{ role }}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="registerForm.get('role').hasError('required')">Role is required</mat-error>
+                </mat-form-field>
+            </mat-card-content>
+            <a routerLink="/login" class="signup-link">
+                <h4 style="margin-top: 0px">I have already Login ?</h4>
+            </a>
+            <button mat-raised-button color="primary" class="btn-block"
+                [disabled]="registerForm.invalid">Register</button>
+        </form>
+    </mat-card>
+</div>

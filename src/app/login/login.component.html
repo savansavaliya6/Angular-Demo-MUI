@@ -1,0 +1,25 @@
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center" flexLayoutGap="15px">
+    <mat-card class="box" class="mat-elevation-z4">
+        <mat-card-header>
+            <mat-card-title>Log in</mat-card-title>
+        </mat-card-header>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" fxLayout="column">
+            <mat-card-content>
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <input matInput placeholder="Username" formControlName="username" required>
+                    <mat-error *ngIf="loginForm.controls['username'].hasError('required')">Username is
+                        required</mat-error>
+                </mat-form-field>
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <input matInput placeholder="Password" formControlName="password" required>
+                    <mat-error *ngIf="loginForm.controls['password'].hasError('required')">Password is
+                        required</mat-error>
+                </mat-form-field>
+            </mat-card-content>
+            <a routerLink="/register" class="signup-link">
+                <h4 style="margin-top: 0px;">Sign Up ?</h4>
+            </a>
+            <button mat-raised-button color="primary" class="btn-block" [disabled]="loginForm.invalid">Log in</button>
+        </form>
+    </mat-card>
+</div>
